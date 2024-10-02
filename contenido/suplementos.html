@@ -24,6 +24,18 @@
     #respuesta{ text-align: center; display: none;}
     #respuesta .icono{ display: block; font-size: 50px;}
     #respuesta .nombre{ letter-spacing: 1px; text-transform: uppercase; font-weight: bold; display: block; padding: 12px 0px; font-size: 20px}
+
+    .ma {
+            margin-bottom: 10px;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0 10px; /* Espaciado entre filas */
+        }
+        table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
 </style>
 
 <!-- -------------- -->
@@ -119,12 +131,36 @@
         /********************/
         
         $.ajax({
-            url:"contenido/suplementos/Lista.php",
+            url:"contenido/suplementos/01092015.csv",
             cache:false,
             success: function(content){
-                $("#contenido_sumplementos").empty().html(content).show();
+                $("#contenido_sumplementos").empty().html(generateTable(content)).show();
             },beforeSend: function(){}
         });
+
+        function generateTable(csvContent) {
+                const rows = csvContent.split('\n');
+                let table = '<table><tbody>';
+                    rows.forEach(row => {
+        const cols = row.split(',');
+        if (cols.length === 4) { // Asegurarse de que la fila tenga 4 columnas
+            const id = cols[0].trim();
+            const nombre = cols[1].trim();
+            const descripcion = cols[2].trim();
+            const precio = cols[3].trim();
+            const imagenSrc = `contenido/suplementos/Productos/thumbs/${id}.jpg`;
+
+            table += '<tr class="ma">';
+                        table += `<td><img src="${imagenSrc}" alt="Imagen de ${nombre}" width="100" height="100"></td>`;
+                        table += `<td>${nombre}</td>`;
+                        table += `<td>${precio}</td>`;
+                        table += '</tr>';
+        }
+    });
+                
+                table += '</tbody></table>';
+                return table;
+            }
         
         /********************/
         /* VALIDAR CORREO */

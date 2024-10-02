@@ -2,11 +2,11 @@
 /**
  * PHPExcelReader class
  * @version 1.0.0
- * @author  Janson Leung
+ * @autor  Janson Leung
  */
 
 /** PHPExcel root directory */
-if (! defined('PHPEXCEL_ROOT')) {
+if (!defined('PHPEXCEL_ROOT')) {
     define('PHPEXCEL_ROOT', dirname(__FILE__) . '/');
     require(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
 }
@@ -17,9 +17,7 @@ class PHPExcelReader implements SeekableIterator, Countable {
     const TYPE_CSV = 'CSV';
 
     private $handle;
-
     private $type;
-
     private $index = 0;
 
     /**
@@ -30,7 +28,7 @@ class PHPExcelReader implements SeekableIterator, Countable {
      * @throws Exception
      */
     public function __construct($filePath, $originalFileName = '', $mimeType = '') {
-        if (! is_readable($filePath)) {
+        if (!is_readable($filePath)) {
             throw new Exception('PHPExcel_Reader: File (' . $filePath . ') not readable');
         }
 
@@ -41,15 +39,15 @@ class PHPExcelReader implements SeekableIterator, Countable {
 
         // Checking the other parameters for correctness
         // This should be a check for string but we're lenient
-        if (! empty($originalFileName) && ! is_scalar($originalFileName)) {
+        if (!empty($originalFileName) && !is_scalar($originalFileName)) {
             throw new Exception('PHPExcel_Reader: Original file (2nd parameter) is not a string or a scalar value.');
         }
-        if (! empty($mimeType) && ! is_scalar($mimeType)) {
+        if (!empty($mimeType) && !is_scalar($mimeType)) {
             throw new Exception('PHPExcel_Reader: Mime type (3nd parameter) is not a string or a scalar value.');
         }
 
         // 1. Determine type
-        if (! $originalFileName) {
+        if (!$originalFileName) {
             $originalFileName = $filePath;
         }
 
@@ -98,7 +96,7 @@ class PHPExcelReader implements SeekableIterator, Countable {
             }
         }
 
-        if (! $this->type) {
+        if (!$this->type) {
             switch ($Extension) {
                 case 'xlsx':
                 case 'xltx': // XLSX template
@@ -179,7 +177,8 @@ class PHPExcelReader implements SeekableIterator, Countable {
      * Rewind the Iterator to the first element.
      * Similar to the reset() function for arrays in PHP
      */
-    public function rewind() {
+    #[\ReturnTypeWillChange]
+    public function rewind(): void {
         $this->index = 0;
         if ($this->handle) {
             $this->handle->rewind();
@@ -191,7 +190,8 @@ class PHPExcelReader implements SeekableIterator, Countable {
      * Similar to the current() function for arrays in PHP
      * @return mixed current element from the collection
      */
-    public function current() {
+    #[\ReturnTypeWillChange]
+    public function current(): mixed {
         if ($this->handle) {
             return $this->handle->current();
         }
@@ -203,14 +203,12 @@ class PHPExcelReader implements SeekableIterator, Countable {
      * Move forward to next element.
      * Similar to the next() function for arrays in PHP
      */
-    public function next() {
+    #[\ReturnTypeWillChange]
+    public function next(): void {
         if ($this->handle) {
             $this->index++;
-
-            return $this->handle->next();
+            // $this->handle->next(); // Elimina el 'return'
         }
-
-        return null;
     }
 
     /**
@@ -218,7 +216,8 @@ class PHPExcelReader implements SeekableIterator, Countable {
      * Similar to the key() function for arrays in PHP
      * @return mixed either an integer or a string
      */
-    public function key() {
+    #[\ReturnTypeWillChange]
+    public function key(): mixed {
         if ($this->handle) {
             return $this->handle->key();
         }
@@ -231,7 +230,8 @@ class PHPExcelReader implements SeekableIterator, Countable {
      * Used to check if we've iterated to the end of the collection
      * @return boolean FALSE if there's nothing more to iterate over
      */
-    public function valid() {
+    #[\ReturnTypeWillChange]
+    public function valid(): bool {
         if ($this->handle) {
             return $this->handle->valid();
         }
@@ -243,7 +243,8 @@ class PHPExcelReader implements SeekableIterator, Countable {
      * total of file number
      * return int
      */
-    public function count() {
+    #[\ReturnTypeWillChange]
+    public function count(): int {
         if ($this->handle) {
             return $this->handle->count();
         }
@@ -252,14 +253,15 @@ class PHPExcelReader implements SeekableIterator, Countable {
     }
 
     /**
-     * Method for SeekableIterator interface. Takes a posiiton and traverses the file to that position
+     * Method for SeekableIterator interface. Takes a position and traverses the file to that position
      * The value can be retrieved with a `current()` call afterwards.
      *
      * @param int $position position in file
-     * @return null
+     * @return void
      */
-    public function seek($position) {
-        if (! $this->handle) {
+    #[\ReturnTypeWillChange]
+    public function seek(int $position): void {
+        if (!$this->handle) {
             throw new OutOfBoundsException('PHPExcel_Reader: No file opened');
         }
 
@@ -273,11 +275,9 @@ class PHPExcelReader implements SeekableIterator, Countable {
                 $this->handle->next();
             }
 
-            if (! $this->handle->valid()) {
+            if (!$this->handle->valid()) {
                 throw new OutOfBoundsException('PHPExcel_Reader: position ' . $position . ' not found');
             }
         }
-
-        return null;
     }
 }

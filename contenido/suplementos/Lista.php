@@ -1,42 +1,63 @@
 <?php
+// Lista.php
 
-    error_reporting(E_ALL);
-    ini_set('display_errors', 'On');
-    error_reporting(0);
-    
-    require 'PHPExcelReader/PHPExcelReader.php';
+// Asegúrate de que el archivo CSV esté en la ruta correcta
+$csvFilePath = 'suplementos/01092015.csv';
 
-    $Reader = new PHPExcelReader('01092015.xls');
-    foreach($Reader as $key => $row){
-    ?>
+// Verifica si el archivo existe
+if (!file_exists($csvFilePath)) {
+    die('El archivo CSV no existe.');
+}
 
-    <div class="media hidden-sm hidden-xs">
-        <div class="media-left">
-            <img src="<?php echo "contenido/suplementos/Productos/thumbs/".$row[0] ?>.jpg">
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading"><?php echo $row[1] ?></h4>
-          <p> <?php echo $row[2] ?> </p>
-        </div>
-    </div>
-    
-    <div class="media visible-sm visible-xs">
-        
-        
-        
-        <div class="text-center">
-            <h4 class="media-heading"><?php echo $row[1] ?></h4>
-            <img src="<?php echo "contenido/suplementos/Productos/thumbs/".$row[0] ?>.jpg">
-        </div>
-        <div class="media-body">
-          <p> <?php echo $row[2] ?> </p>
-        </div>
-    </div>
-
-        
-    <?php
-
-    }
-
+// Sirve el HTML
 ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Leer CSV</title>
+</head>
+<body>
+    <h1>Datos del CSV</h1>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('<?php echo $csvFilePath; ?>')
+                .then(response => response.text())
+                .then(text => processCSV(text))
+                .catch(error => console.error('Error al cargar el archivo CSV:', error));
+        });
+
+        function processCSV(text) {
+            const rows = text.split('\n');
+            const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+
+            rows.forEach(row => {
+                const cols = row.split(',');
+                if (cols.length === 4) { // Asegurarse de que la fila tenga 4 columnas
+                    const tr = document.createElement('tr');
+                    cols.forEach(col => {
+                        const td = document.createElement('td');
+                        td.textContent = col.trim();
+                        tr.appendChild(td);
+                    });
+                    tableBody.appendChild(tr);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
