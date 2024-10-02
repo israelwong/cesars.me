@@ -1,0 +1,134 @@
+
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <div class="panel-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="glyphicon glyphicon-home"></span> Sucursal Tecámac
+                </div>
+                <div class="col-md-6 text-right">
+                    5934 8031 <span class="glyphicon glyphicon-phone"></span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="sucursal panel-body">
+        <!-- HORARIOS DE ATENCIÓN -->
+        <div class="alert alert-warning" role="alert">
+            <span class=" glyphicon glyphicon-calendar"></span> Horarios de atención: Lunes a viernes de 6:00 a 22:00 hrs. Sábados de 7:00 a 14:00 hrs.
+        </div>
+    
+        <!-- servicios -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title"><span class="glyphicon glyphicon-heart"></span> Servicios</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Instructores capacitados</li>
+                            <li>Regaderas</li>
+                            <li>Vestidores</li>
+                            <li>Boutique</li>
+                            <li>Fuente de sodas</li>
+                            <li>Vapor</li>
+                            <li>Estancia infantil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-info" style="height: 205px;">
+                    <div class="panel-heading">
+                        <div class="panel-title"><span class="glyphicon glyphicon-star"></span> Actividades</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Área de pesas</li>
+                            <li>Área de cardiovascular</li>
+                            <li>Clases de box</li>
+                            <li>Zumba</li>
+                            <li>Clases de baile</li>
+                            <li>Clases grupales</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GALERÍA FOTOGRÁFICA -->
+        <div class="row">
+            <div class="col-md-12">
+                 <div class="photoset-grid-lightbox" style="visibility: hidden;">
+                    <img src="images/showroom/tecamac/1.jpg" data-highres="images/showroom/tecamac/1.jpg">
+                    <img src="images/showroom/tecamac/2.jpg" data-highres="images/showroom/tecamac/2.jpg">
+                    <img src="images/showroom/tecamac/3.jpg" data-highres="images/showroom/tecamac/3.jpg">
+                    <img src="images/showroom/tecamac/4.jpg" data-highres="images/showroom/tecamac/4.jpg">
+                    <img src="images/showroom/tecamac/5.jpg" data-highres="images/showroom/tecamac/5.jpg">
+                    <img src="images/showroom/tecamac/6.jpg" data-highres="images/showroom/tecamac/6.jpg">
+                    <img src="images/showroom/tecamac/7.jpg" data-highres="images/showroom/tecamac/7.jpg">
+                    <img src="images/showroom/tecamac/8.jpg" data-highres="images/showroom/tecamac/8.jpg">
+                    <img src="images/showroom/tecamac/9.jpg" data-highres="images/showroom/tecamac/9.jpg">
+                    <img src="images/showroom/tecamac/10.jpg" data-highres="images/showroom/tecamac/10.jpg">            
+                </div>        
+            </div>
+        </div>
+        
+        <!-- MAPA DE UBICACIÓN -->
+<!--        <div class="row">
+            <div class="col-md-12">
+                <div id="map"></div>
+                <p>Carretera Federal Mexico Pachuca km 34.5. Santa Maria Ozumbilla. Tecámac Estado de México. CP 55760 </p>
+            </div>
+        </div>-->
+    
+    </div>
+</div>
+
+<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQR352wF-X1oouxr_y25mJTym0SDlblCw&callback=initMap"></script>-->
+<script>
+    
+//    setTimeout(initMap, 200);    
+//    function initMap() {
+//        var uluru = {lat: 19.683631, lng: -98.993218};
+//        var map = new google.maps.Map(document.getElementById('map'), {
+//            zoom: 16,
+//            center: uluru
+//        });
+//        var marker = new google.maps.Marker({
+//            position: uluru,
+//            map: map
+//        });
+//    }
+        
+    $(document).ready(function(){
+    
+//        setTimeout(initMap, 200);
+            
+        $('.photoset-grid-lightbox').photosetGrid({
+                layout: '3232',
+                width: '80%',
+                gutter: '10px',
+                highresLinks: true,
+                lowresWidth: 300,
+                rel: 'gallery',
+                onInit: function(){},
+                onComplete: function(){
+                    $('.photoset-grid-lightbox').attr('style', '');
+                    $('.photoset-grid-lightbox a').colorbox({
+                        photo: true,
+                        scalePhotos: true,
+                        maxHeight:'90%',
+                        maxWidth:'90%'
+                      });
+                },
+        });
+        
+    });
+    
+</script>

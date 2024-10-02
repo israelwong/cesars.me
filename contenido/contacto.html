@@ -1,0 +1,207 @@
+
+<style>
+    .error{ font-style: italic; font-size: 12px; margin: 0px; padding: 5px; display: none; }
+    #respuesta{ text-align: center; display: none;}
+    #respuesta .icono{ display: block; font-size: 50px;}
+    #respuesta .nombre{ letter-spacing: 1px; text-transform: uppercase; font-weight: bold; display: block; padding: 12px 0px; font-size: 20px}
+    
+    h3{font-family: 'Orbitron', sans-serif; color: #999; font-size: 14px}
+    ul li{ color: #999; }
+    .direccion{ text-align: center; }
+    #map {margin-top: -1px; height: 450px; border: 1px solid #ccc; }
+    .header-seccion{
+        margin-bottom: 20px;
+    }
+</style>
+
+<!-- -------------- -->
+<!-- HEADER SECCIÓN -->
+<!-- -------------- -->
+<div class="header-seccion">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Contacto</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Contacto" class="container">
+    <div class="row">
+        
+        <div class="col-md-12">
+            <div class="row">
+                
+                <div class="col-md-3">
+                    
+                    <!-- VENTA DE EQUIPO -->
+                    <div class="panel panel-default" style="height: 215px;">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                Venta de equipo
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li><span class="glyphicon glyphicon-phone-alt"></span> Oficina (0155) 59 36 32 71</li>
+                                <li><span class="glyphicon glyphicon-phone-alt"></span> Whatsapp (55) 6577 5669 </li>
+                                <li><span class="glyphicon glyphicon-envelope"></span> cesaraseprof@hotmail.com</li>
+                                <li><span class="glyphicon glyphicon-envelope"></span> juliotonic@hotmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- VENTA DE COMPLEMENTOS-->
+                    <div class="panel panel-default" style="height: 215px;">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                Venta de complementos
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li><b>Oficina: </b> (0155) 5934 9416</li>
+                                <li><b>Whatsapp:</b> (55) 3080 1128</li>
+                                <li><b>Email:</b> arlacss@hotmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- MAPA -->
+                <div class="col-md-6">
+                    <div id="map"></div>
+                </div>
+                
+                <div class="col-md-3">
+                    
+                    <div id="formulario" class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">Contactanos</div>
+                        </div>
+                        <div class="panel-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="txt_nombre">Ingresa Nombre</label>
+                                    <input type="text" class="form-control" id="txt_nombre">
+                                    <div id="err_nombre" class="alert alert-danger error">Nombre requerido</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txt_tel">Teléfono de contacto</label>
+                                    <input type="text" class="form-control" id="txt_tel">
+                                    <div id="err_tel" class="alert alert-danger error">Teléfono requerido</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txt_email">Correo electrónico</label>
+                                    <input type="text" class="form-control" id="txt_email">
+                                    <div id="err_email" class="alert alert-danger error">Correo requerido</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txt_msj">Mensaje</label>
+                                    <textarea id="txt_msg" class="form-control" rows="3"></textarea>
+                                    <div id="err_msg" class="alert alert-danger error">Mensaje requerido</div>
+                                </div>
+                                <button id="btn_enviar" class="btn btn-primary btn-block">Enviar mensaje</button>
+                            </form>
+                            
+                        </div>
+                    </div>
+                    
+                    <div id="respuesta">
+                        <div class="alert alert-success">
+                            <span class="icono glyphicon glyphicon-ok-circle"></span>
+                            <span class="nombre"></span>Tu mensaje ha sido enviado exitosamente, gracias por contactarnos, responderemos lo antes posible.
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="direccion alert alert-info">Carretera Federal Mexico Pachuca km 34.5. Santa Maria Ozumbilla. Tecámac Estado de México. CP 55760</div>
+
+        </div>
+    </div> 
+
+</div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQR352wF-X1oouxr_y25mJTym0SDlblCw&callback=initMap"></script>
+<script>
+    
+    setTimeout(initMap, 200);    
+    function initMap() {
+        var uluru = {lat: 19.683631, lng: -98.993218};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+        
+    $(document).ready(function(){
+                
+        var nombre="";
+        var email="";
+        var telefono="";
+        var msg="";
+        var err=0;
+        
+        
+        $("#btn_enviar").click(function(e){
+            e.preventDefault();
+            validar();
+        });
+                
+        function validar(){
+            err=0;
+            nombre = $("#txt_nombre").val();
+            telefono = $("#txt_tel").val();
+            email = $("#txt_email").val();
+            msg = $("#txt_msg").val();
+                        
+            if(!es_requerido(nombre)){
+                $("#err_nombre").slideDown();
+                err++;
+            } else $("#err_nombre").slideUp();
+            
+            if(!es_requerido(telefono)){
+                $("#err_tel").slideDown();
+                err++;
+            } else $("#err_tel").slideUp();
+            
+            if(!es_email(email)){
+                $("#err_email").slideDown();
+                err++;
+            } else $("#err_email").slideUp();
+            
+            if(!es_requerido(msg)){
+                $("#err_msg").slideDown();
+                err++;
+            } else $("#err_msg").slideUp();
+            
+            if(err==0){                     
+                $.get(
+                    "email.php",
+                    {
+                        "nombre":nombre,
+                        "telefono":telefono,
+                        "email":email,
+                        "msg":msg
+                    }
+                );
+                
+                $("#btn_enviar").hide();
+                $("#formulario").slideUp(300, function(){
+                    $("#respuesta .nombre").text(nombre);
+                    $("#respuesta").slideDown();
+                });       
+            }
+        }
+        
+    });
+    
+</script>

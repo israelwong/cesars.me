@@ -1,0 +1,139 @@
+
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <div class="panel-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="glyphicon glyphicon-home"></span> Sucursal Zumpango Platinum
+                </div>
+                <div class="col-md-6 text-right">
+                    01(591) 918 6297 <span class="glyphicon glyphicon-phone"></span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="sucursal panel-body">
+        <!-- HORARIOS DE ATENCIÓN -->
+        <div class="alert alert-warning" role="alert">
+            <span class=" glyphicon glyphicon-calendar"></span> Horarios de atención: Lunes a viernes 6:00 a 22:00. Sábados y domingos 7:00 a 14:00 hrs
+        </div>
+    
+        <!-- servicios -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title"><span class="glyphicon glyphicon-heart"></span> Servicios</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Instructores capacitados</li>
+                            <li>Área de pesas</li>
+                            <li>Área de cardiovascular</li>
+                            <li>Área de estancia infantil</li>
+                            <li>Lockers</li>
+                            <li>Regaderas</li>
+                            <li>Tienda de suplementos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-info" style="height: 222px;">
+                    <div class="panel-heading">
+                        <div class="panel-title"><span class="glyphicon glyphicon-star"></span> Actividades</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Clases de fitness</li>
+                            <li>Aumento de masa muscular</li>
+                            <li>Reducción de peso</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="panel panel-info" style="height: 222px;">
+                    <div class="panel-heading">
+                        <div class="panel-title"><span class="glyphicon glyphicon-leaf"></span> Clases de fitness</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Zumba</li>
+                            <li>Tae-bo</li>
+                            <li>Sexy dance</li>
+                            <li>Yoga</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GALERÍA FOTOGRÁFICA -->
+        <div class="row">
+            <div class="col-md-12">
+                 <div class="photoset-grid-lightbox" style="visibility: hidden;">
+                    <img src="images/showroom/zumpango/2.jpg" data-highres="images/showroom/zumpango/2.jpg">
+                    <img src="images/showroom/zumpango/3.jpg" data-highres="images/showroom/zumpango/3.jpg">
+                    <img src="images/showroom/zumpango/4.jpg" data-highres="images/showroom/zumpango/4.jpg">
+                </div>        
+            </div>
+        </div>
+        
+        <!-- MAPA DE UBICACIÓN -->
+        <div class="row">
+            <div class="col-md-12">
+                <div id="map"></div>
+                <p>Calle Nápoles #32. Col. Juárez. Delegación Cuauhtemoc. CP 03810</p>
+            </div>
+        </div>
+    
+    </div>
+</div>
+
+<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQR352wF-X1oouxr_y25mJTym0SDlblCw&callback=initMap"></script>-->
+<script>
+    
+//    setTimeout(initMap, 200);    
+//    function initMap() {
+//        
+//        var uluru = {lat: 19.789753, lng: -99.0582897};
+//        var map = new google.maps.Map(document.getElementById('map'), {
+//            zoom: 17,
+//            center: uluru
+//        });
+//        var marker = new google.maps.Marker({
+//            position: uluru,
+//            map: map
+//        });
+//    }
+        
+    $(document).ready(function(){
+        
+        $('.photoset-grid-lightbox').photosetGrid({
+                layout: '12',
+                width: '80%',
+                gutter: '10px',
+                highresLinks: true,
+                lowresWidth: 300,
+                rel: 'gallery',
+                onInit: function(){},
+                onComplete: function(){
+                    $('.photoset-grid-lightbox').attr('style', '');
+                    $('.photoset-grid-lightbox a').colorbox({
+                        photo: true,
+                        scalePhotos: true,
+                        maxHeight:'90%',
+                        maxWidth:'90%'
+                      });
+                },
+        });
+        
+    });
+    
+</script>

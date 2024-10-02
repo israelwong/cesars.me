@@ -1,0 +1,609 @@
+<style>
+    /* CATEGORÍAS */    
+    .caption{text-align: center;}
+    .caption h3{ font-family: 'Orbitron', sans-serif; color: #999; text-transform: uppercase; text-align: center; font-size: 16px;}
+    #categoria_eq{margin: 30px 0px 0px 0px;}
+    
+
+    /* DESKTOP CATEGORIAS */
+    .bs-glyphicons {margin: 0 -10px 20px;overflow: hidden;}
+    .bs-glyphicons-list {padding-left: 0; list-style: none;}    
+    .bs-glyphicons li {
+        float: left;
+        width: 32.5%;
+        height: 230px;
+        padding: 30px 10px 0px 0px;        
+        text-align: center;
+        background: #e7e7e7;
+        border: 2px solid #f1f1f1;
+    }
+    
+    /*DESKTIO SUB CATEGORIA*/
+    #subcategoria-eq{ display: none; }
+    #subcategoria-eq p{ font-size:12px; color: #999; }
+    #subcategoria-eq .title{ margin: 30px 0px 30px 0px; border-bottom: 1px solid #ccc; border-top: 1px solid #ccc; }
+    
+    #subcategoria-eq .subtitulo p{
+        font-family: 'Orbitron', sans-serif; 
+        color: #337ab7; 
+        font-size: 16px; 
+        margin-top: 20px;
+        display: inline-block;
+    }
+    
+    #subcategoria-eq .subtitulo .glyphicon{
+        color: #337ab7;
+    }
+    #subcategoria-eq h4{ color: #999; font-weight: normal; }
+    #subcategoria-eq img{ height: 250px; margin: auto; }
+    #subcategoria-eq .bs-glyphicons li {
+        float: left;
+        width: 33.3%;
+        height: 390px;
+        padding: 10px 10px 0px 0px;        
+        text-align: center;
+        background: #fff;
+        border: 2px solid #f1f1f1;
+    }
+    .btn-info{ background: #337ab7; margin-bottom: 10px; margin-top: 10px; }
+    
+    /*MOVIL*/    
+    #subcategoria-eq .bs-glyphicons-list-movil {padding-left: 0;list-style: none;}   
+    #subcategoria-eq .bs-glyphicons-movil img{ height: auto; margin: auto; }
+    #subcategoria-eq .bs-glyphicons-movil li {
+        padding: 30px 10px 0px 0px;        
+        text-align: center;
+        background: #fff;
+        border: 2px solid #f1f1f1;
+    }
+    
+    
+    #categoria_eq .item{
+        padding: 10px 5px 0px 0px;
+        text-align: center;
+        background: #e7e7e7;
+        border: 2px solid #f1f1f1;
+        height: 210px;}
+    #categoria_eq .caption{ margin-bottom: 20px;}
+    
+    .error{ font-style: italic; font-size: 12px; margin: 0px; padding: 5px; display: none; }
+    #respuesta{ text-align: center; display: none;}
+    #respuesta .icono{ display: block; font-size: 50px;}
+    #respuesta .nombre{ letter-spacing: 1px; text-transform: uppercase; font-weight: bold; display: block; padding: 12px 0px; font-size: 20px}
+    
+    #respuesta_cot{ text-align: center; display: none;}
+    #respuesta_cot .icono{ display: block; font-size: 50px;}
+    #respuesta_cot .nombre{ letter-spacing: 1px; text-transform: uppercase; font-weight: bold; display: block; padding: 12px 0px; font-size: 20px}
+    
+    #detalles-eq ul li{ color: #337ab7; }
+    
+    .btn-eliminar{ cursor: pointer; color: #c12e2a; }
+    
+    #formulario_solicitud_cotizacion{ display: none; }
+    #btn_cotizar_equipos{ display: none; }
+    #respuesta_cot{ display: none; }
+
+</style>
+
+<!-- -------------- -->
+<!-- HEADER SECCIÓN -->
+<!-- -------------- -->
+<div class="header-seccion">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h3><span class="glyphicon glyphicon-th-large"></span> Equipo de gimnasio</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- --------- -->
+<!-- CONTENIDO -->
+<!-- --------- -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <a id="btn_app_desktop" href="#coloresDesktop" class="visible-lg visible-md">
+                <img class="img-responsive img-thumbnail" src="images/banner_colores.png">
+            </a>
+            <a id="btn_app_movil" href="#coloresMovil" class="visible-sm visible-xs">
+                <img class="img-responsive img-thumbnail" src="images/banner_colores_movil.jpg">
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="categoria_eq" class="container">
+    
+    <div class="row">
+        
+        <div class="col-md-4">
+            
+            <!-- INFO EQUIPOS -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><span class="glyphicon glyphicon-phone"></span> Contacto de equipo</div>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li><span class="glyphicon glyphicon-phone-alt"></span> Oficina (0155) 59 36 32 71</li>
+                        <li><span class="glyphicon glyphicon-phone-alt"></span> Whatsapp (55) 6577 5669 </li>
+                        <li><span class="glyphicon glyphicon-envelope"></span> cesaraseprof@hotmail.com</li>
+                        <li><span class="glyphicon glyphicon-envelope"></span> juliotonic@hotmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FORMULARIO EQUIPOS -->
+            <div id="formulario" class="panel panel-default">
+                
+                <div class="panel-heading">
+                    <div class="panel-title"><span class="glyphicon glyphicon-envelope"></span> Solicita una cotización</div>
+                </div>
+                
+                <div class="panel-body">
+                    <form class="form">
+                         <div class="form-group">
+                            <label for="txt_nombre">Ingresa Nombre</label>
+                            <input type="text" class="form-control" id="txt_nombre">
+                            <div id="err_nombre" class="alert alert-danger error">Nombre requerido</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txt_tel">Teléfono de contacto</label>
+                            <input type="text" class="form-control" id="txt_tel">
+                            <div id="err_tel" class="alert alert-danger error">Teléfono requerido</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_email">Correo electrónico</label>
+                            <input type="text" class="form-control" id="txt_email">
+                            <div id="err_email" class="alert alert-danger error">Correo requerido</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_msj">Mensaje</label>
+                            <textarea id="txt_msg" class="form-control" rows="3"></textarea>
+                            <div id="err_msg" class="alert alert-danger error">Mensaje requerido</div>
+                        </div>
+                        <button id="btn_enviar" class="btn btn-primary btn-block">Enviar mensaje</button>
+                    
+                    </form>
+                </div>
+            </div>
+            
+            <div id="respuesta">
+                <div class="alert alert-success">
+                    <span class="icono glyphicon glyphicon-ok-circle"></span>
+                    <span class="nombre"></span>Tu mensaje ha sido enviado exitosamente, gracias por contactarnos, responderemos lo antes posible.
+                </div>
+            </div>
+            <!-- END FORMULARIO -->
+            
+        </div>
+        
+        <!-- MENU EQUIPOS  -->
+        <div class="col-md-8">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="item col-md-4">
+                        <a href="#abdomen">
+                            <div class="img-responsive">
+                                <div class="caption">
+                                    <h3>Abdomen</h3>
+                                </div>
+                                <img src="images/btn_abdomen.png">
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item col-md-4">
+                         <a href="#biceps">
+                            <div class="img-responsive">
+                                <div class="caption">
+                                    <h3>Biceps</h3>
+                                </div>
+                                <img src="images/btn_biceps.png">
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item col-md-4">
+                        <a href="#espalda">
+                            <div class="img-responsive">
+                                <div class="caption">
+                                    <h3>Espalda</h3>
+                                </div>
+                                <img src="images/btn_espalda.png">
+                            </div>
+                        </a>
+                    </div> 
+                </div>
+
+                <div class="row">
+                    <div class="item col-md-4">
+                        <a href="#hombro">
+                            <div class="img-responsive">
+                                <div class="caption">
+                                    <h3>Hombro</h3>
+                                </div>
+                                <img src="images/btn_hombro.png">
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="item col-md-4">
+                        <a href="#muslos">
+                            <div class="img-responsive">
+                                <div class="caption">
+                                    <h3>Muslos</h3>
+                                </div>
+                                <img src="images/btn_muslos.png">
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="item col-md-4">
+                        <a href="#pantorrilla">
+                            <div class="img-responsive">
+                                <div class="caption">
+                                    <h3>Pantorrilla</h3>
+                                </div>
+                                <img src="images/btn_pantorrilla.png">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="item col-md-4">
+                        <a href="#pectorales">
+                            <div class="img-responsive">
+                                <div class="caption">
+                                    <h3>Pectorales</h3>
+                                </div>
+                                <img src="images/btn_pectorales.png">
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="item col-md-4">
+                        <a href="#triceps">
+                            <div class="img-responsive">
+                                <div class="caption">
+                                    <h3>Triceps</h3>
+                                </div>
+                                <img src="images/btn_triceps.png">
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="item col-md-4">
+                        <a href="#varios">
+                            <div class="img-responsive">
+                                <div class="caption">
+                                    <h3>Varios</h3>
+                                </div>
+                                <img src="images/btn_varios.png">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br/>
+
+<div id="subcategoria-eq">
+    <div class="container">
+        <div class="row title" >
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="subtitulo">
+                    <span class='glyphicon glyphicon-th hidden-sm hidden-xs'></span> <p></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="text-right">
+                    <a href="#" class="btn btn-info cerrar">Cerrar <span class="glyphicon glyphicon-remove-circle"></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contenedor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal_cotizador" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-inbox glyphicon"></span> Equipos a cotizar <span id="total-equipos" class="badge">0</span></h4>        
+      </div>
+      <div class="modal-body">
+          
+          <table id="detalles-eq" class="table table-striped table-condensed"> 
+            <thead> 
+                <tr> 
+                    <th>Categoria</th> 
+                    <th>Modelo</th> 
+                    <th></th> 
+                </tr> 
+            </thead> 
+            <tbody> 
+            </tbody> 
+        </table>
+          
+        <!-- SOLICITUD DE COTIZACION -->
+        
+        <div id="formulario_solicitud_cotizacion" class="form">
+            <div class="form-group">
+                <label for="txt_nombre_cot">Ingresa Nombre</label>
+                <input type="text" class="form-control" id="txt_nombre_cot">
+                <div id="err_nombre_cot" class="alert alert-danger error">Nombre requerido</div>
+            </div>
+
+            <div class="form-group">
+                <label for="txt_tel_cot">Teléfono de contacto</label>
+                <input type="text" class="form-control" id="txt_tel_cot">
+                <div id="err_tel_cot" class="alert alert-danger error">Teléfono requerido</div>
+            </div>
+            <div class="form-group">
+                <label for="txt_email_cot">Correo electrónico</label>
+                <input type="text" class="form-control" id="txt_email_cot">
+                <div id="err_email_cot" class="alert alert-danger error">Correo requerido</div>
+            </div>
+            <div class="form-group">
+                <label for="txt_msj_cot">Mensaje</label>
+                <textarea id="txt_msg_cot" class="form-control" rows="3"></textarea>
+                <div id="err_msg_cot" class="alert alert-danger error">Mensaje requerido</div>
+            </div>
+            <button id="btn_solicitar" class="btn btn-primary btn-block">Solicitar cotización ahora</button>
+        </div>
+        
+        <div id="respuesta_cot">
+            <div class="alert alert-success">
+                <span class="icono glyphicon glyphicon-ok-circle"></span>
+                <span class="nombre"></span>Se ha enviado tu solicitud de cotización exitosamente, responderemos lo antes posible.
+            </div>
+        </div>
+          
+      </div>
+      <div class="modal-footer">
+            <button id="btn_cotizar_equipos" type="button" class="btn btn-primary btn-block">Solicitar cotización</button>
+            <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Seguir navegando</button>
+      </div>
+        
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        
+        var caja =[];
+        
+        /**************************/
+        /* GESTIONAR SUBSECCIONES */
+        /**************************/
+        
+//        cargarSubCat("abdomen");
+        
+        $('#categoria_eq a').click(function(e){
+            e.preventDefault();
+            $('html, body').animate( {scrollTop : 0}, 0 );
+            var href = $(this).attr('href');
+            var target = href.substring(1, href.length); 
+            cargarSubCat(target);    
+        });
+        
+        $("#btn_app_desktop").click(function(e){window.open("App/Desktop.html", "nuevo", "directories=no, location=no, menubar=no, scrollbars=no, statusbar=no, tittlebar=no, width=1200, height=600");});
+        $("#btn_app_movil").click(function(e){window.open("App/Movil.html", "nuevo", "directories=no, location=no, menubar=no, scrollbars=no, statusbar=no, tittlebar=no, width=600, height=900");});
+        
+        function cargarSubCat(url){
+
+            $.ajax({
+                url:"contenido/equipo/"+url+".php",
+                cache:false,
+                success: function(content){
+                    $("#categoria_eq").hide();
+                    $("#subcategoria-eq p").html(url.toUpperCase());
+                    
+                    $("#subcategoria-eq .contenedor").empty().html(content);
+                    $("#subcategoria-eq").show(); 
+                    
+                    $("#subcategoria-eq .cerrar").click(function(e){
+                        e.preventDefault();
+                        $("#subcategoria-eq").hide();
+                        $("#categoria_eq").show();
+                    });
+                    
+                    /* AGREGAR PRODUCTO A CAJA */
+                    $(".btn_agregar").click(function(e){                        
+                        agregarProducto($(this).attr("data-target"),$(this).attr("data-name"));
+                        $("#modal_cotizador").modal();
+                    });
+                                        
+                    $(".btn_detalles").click(function(e){
+                        $("#modal_cotizador").modal();
+                    });               
+                    
+                    $("#btn_cotizar_equipos").click(function(){
+                        $(".modal-footer").slideUp();
+                        $("#formulario_solicitud_cotizacion").slideDown();
+                    });
+
+                },beforeSend: function(){}
+            });
+
+        }
+        
+        function agregarProducto(categoria, modelo){
+            caja.push( new Array( categoria, modelo) );
+            mostrarDetalles();
+        }
+        
+        function eliminarProducto(modelo){
+            for(var i=0; i<caja.length; i++){
+                if(caja[i][1] == modelo) caja.splice(i, 1);
+            }
+            mostrarDetalles();   
+        }
+        
+        function mostrarDetalles(){
+            
+            var print="";
+            
+            for(var i=0; i<caja.length; i++){
+                print+="<tr>";
+                    print+="<td>" +caja[i][0] + "</td>";
+                    print+="<td>" +caja[i][1] + "</td>";
+                    print+="<td><span data-name='"+ caja[i][1] +"' class='btn-eliminar glyphicon glyphicon-remove'></span></td>"; 
+                print+="</tr>";
+            }
+
+            $("#total-equipos").text(caja.length);
+            $("#detalles-eq tbody").html(print);
+
+            $(".btn-eliminar").click(function(e){
+                eliminarProducto($(this).attr('data-name')); 
+            });
+            
+            if(caja.length!=0)  $("#btn_cotizar_equipos").show();
+            else  $("#btn_cotizar_equipos").hide();
+             
+        }
+        
+        /********************/
+        /* VALIDAR CORREO */
+        /********************/
+        var nombre="";
+        var email="";
+        var telefono="";
+        var msg="";
+        var tot_eq="";        
+        var listado="";
+        var err=0;
+        
+        /*EMAIL COTIZACIÓN*/
+        $("#btn_solicitar").click(function(){
+            
+            err=0;
+            nombre = $("#txt_nombre_cot").val();
+            telefono = $("#txt_tel_cot").val();
+            email = $("#txt_email_cot").val();
+            msg = $("#txt_msg_cot").val();
+            listado="";
+                        
+            if(!es_requerido(nombre)){
+                $("#err_nombre_cot").slideDown();
+                err++;
+            } else $("#err_nombre_cot").slideUp();
+            
+            if(!es_requerido(telefono)){
+                $("#err_tel_cot").slideDown();
+                err++;
+            } else $("#err_tel_cot").slideUp();
+            
+            if(!es_email(email)){
+                $("#err_email_cot").slideDown();
+                err++;
+            } else $("#err_email_cot").slideUp();
+            
+            if(!es_requerido(msg)){
+                $("#err_msg_cot").slideDown();
+                err++;
+            } else $("#err_msg_cot").slideUp();
+            
+            tot_eq=caja.length;
+            
+            for(var i=0; i<caja.length; i++){
+                listado+="Categoria: " + caja[i][0] + " Modelo: " + caja[i][1]+" / "; 
+            }
+            
+            if(err==0){
+                               
+                $.get(
+                    "emailEquiposCot.php",
+                    {
+                        "nombre":nombre,
+                        "telefono":telefono,
+                        "email":email,
+                        "msg":msg,
+                        "tot_eq":tot_eq,
+                        "listado":listado
+                    }
+                );
+                
+                $("#btn_solicitar").hide();
+                $("#detalles-eq").hide();
+                
+                $("#formulario_solicitud_cotizacion").slideUp(300, function(){
+                    $("#respuesta_cot .nombre").text(nombre);
+                    $("#respuesta_cot").slideDown();
+                });       
+            }
+            
+        });
+        
+        /*EMAIL GENERAL */
+        $("#btn_enviar").click(function(e){
+            e.preventDefault();
+            validar();
+        });
+                
+        function validar(){
+            err=0;
+            nombre = $("#txt_nombre").val();
+            telefono = $("#txt_tel").val();
+            email = $("#txt_email").val();
+            msg = $("#txt_msg").val();
+                        
+            if(!es_requerido(nombre)){
+                $("#err_nombre").slideDown();
+                err++;
+            } else $("#err_nombre").slideUp();
+            
+            if(!es_requerido(telefono)){
+                $("#err_tel").slideDown();
+                err++;
+            } else $("#err_tel").slideUp();
+            
+            if(!es_email(email)){
+                $("#err_email").slideDown();
+                err++;
+            } else $("#err_email").slideUp();
+            
+            if(!es_requerido(msg)){
+                $("#err_msg").slideDown();
+                err++;
+            } else $("#err_msg").slideUp();
+            
+            if(err==0){                     
+                $.get(
+                    "emailEquipos.php",
+                    {
+                        "nombre":nombre,
+                        "telefono":telefono,
+                        "email":email,
+                        "msg":msg
+                    }
+                );
+                
+                $("#btn_enviar").hide();
+                $("#formulario").slideUp(300, function(){
+                    $("#respuesta .nombre").text(nombre);
+                    $("#respuesta").slideDown();
+                });       
+            }
+        }
+        
+    });
+</script>

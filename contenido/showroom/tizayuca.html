@@ -1,0 +1,152 @@
+
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <div class="panel-title">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="glyphicon glyphicon-home"></span> Sucursal Tizayuca
+                </div>
+                <div class="col-md-6 text-right">
+                    0177 9100 6930<span class="glyphicon glyphicon-phone"></span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="sucursal panel-body">
+        <!-- HORARIOS DE ATENCIÓN -->
+        <div class="alert alert-warning" role="alert">
+            <span class=" glyphicon glyphicon-calendar"></span> Lunes a viernes de 6 a 22 hrs y sábados de 7 a 14 hrs
+        </div>
+    
+        <!-- servicios -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-info" style="height: 285px;">
+                    <div class="panel-heading">
+                        <div class="panel-title"><span class="glyphicon glyphicon-heart"></span> Servicios</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Instructores Certificados</li>
+                            <li>Boutique Deportiva</li>
+                            <li>Tienda de suplementos alimenticios</li>
+                            <li>Regaderas</li>
+                            <li>Lockers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-info" style="height: 285px;">
+                    <div class="panel-heading">
+                        <div class="panel-title"><span class="glyphicon glyphicon-star"></span> Actividades</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Área de pesas</li>
+                            <li>Área de cardiovascular</li>
+                            <li>Área de crossfit</li>
+                            <li>Área de estancia infantil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title"><span class="glyphicon glyphicon-leaf"></span> Clases de fitness</div>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Ritmos latinos</li>
+                            <li>Entrenamiento funcional</li>
+                            <li>Defensa personal para adultos</li>
+                            <li>Yoga</li>
+                            <li>Cardio kick boxin</li>
+                            <li>Crossfit funcioal</li>
+                            <li>Fit ball</li>
+                            <li>Step banquitos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GALERÍA FOTOGRÁFICA -->
+        <div class="row">
+            <div class="col-md-12">
+                 <div class="photoset-grid-lightbox" style="visibility: hidden;">
+                    <img src="images/showroom/tizayuca/1.jpg" data-highres="images/showroom/tizayuca/1.jpg">
+                    <img src="images/showroom/tizayuca/2.jpg" data-highres="images/showroom/tizayuca/2.jpg">
+                    <img src="images/showroom/tizayuca/3.jpg" data-highres="images/showroom/tizayuca/3.jpg">
+                    <img src="images/showroom/tizayuca/4.jpg" data-highres="images/showroom/tizayuca/4.jpg">
+                    <img src="images/showroom/tizayuca/5.jpg" data-highres="images/showroom/tizayuca/5.jpg">
+                    <img src="images/showroom/tizayuca/6.jpg" data-highres="images/showroom/tizayuca/6.jpg">
+                    <img src="images/showroom/tizayuca/7.jpg" data-highres="images/showroom/tizayuca/7.jpg">
+                    <img src="images/showroom/tizayuca/8.jpg" data-highres="images/showroom/tizayuca/8.jpg">
+                    <img src="images/showroom/tizayuca/9.jpg" data-highres="images/showroom/tizayuca/9.jpg">
+                    <img src="images/showroom/tizayuca/10.jpg" data-highres="images/showroom/tizayuca/10.jpg">
+                    <img src="images/showroom/tizayuca/11.jpg" data-highres="images/showroom/tizayuca/11.jpg">
+                    <img src="images/showroom/tizayuca/12.jpg" data-highres="images/showroom/tizayuca/12.jpg">
+                    <img src="images/showroom/tizayuca/13.jpg" data-highres="images/showroom/tizayuca/13.jpg">
+                </div>        
+            </div>
+        </div>
+        
+        <!-- MAPA DE UBICACIÓN -->
+<!--        <div class="row">
+            <div class="col-md-12">
+                <div id="map"></div>
+                <p>Carretera libre México Pacuhca Lote 1 Número 26 Zona Industrial Tizayuca Hidalgo</p>
+            </div>
+        </div>-->
+    
+    </div>
+</div>
+
+<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQR352wF-X1oouxr_y25mJTym0SDlblCw&callback=initMap"></script>-->
+<script>
+    
+//    setTimeout(initMap, 200);    
+//    function initMap() {
+//        
+//        var uluru = {lat: 19.8278613, lng: -98.9799021};
+//        var map = new google.maps.Map(document.getElementById('map'), {
+//            zoom: 17,
+//            center: uluru
+//        });
+//        var marker = new google.maps.Marker({
+//            position: uluru,
+//            map: map
+//        });
+//    }
+        
+    $(document).ready(function(){
+        
+        $('.photoset-grid-lightbox').photosetGrid({
+                layout: '2434',
+                width: '80%',
+                gutter: '10px',
+                highresLinks: true,
+                lowresWidth: 300,
+                rel: 'gallery',
+                onInit: function(){},
+                onComplete: function(){
+                    $('.photoset-grid-lightbox').attr('style', '');
+                    $('.photoset-grid-lightbox a').colorbox({
+                        photo: true,
+                        scalePhotos: true,
+                        maxHeight:'90%',
+                        maxWidth:'90%'
+                      });
+                },
+        });
+        
+    });
+    
+</script>

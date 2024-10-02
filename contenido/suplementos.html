@@ -1,0 +1,191 @@
+<style>
+    #marcas{margin: 15px 0px;}
+    #contenido_sumplementos{padding:0px 0px 20px 0px;}
+    
+    #contenido_sumplementos .media .media-heading{
+        font-family: 'Orbitron', sans-serif;
+        color: #007095;
+    }
+    #contenido_sumplementos .media .media-body{
+        padding: 10px 10px 0px 15px;
+        text-align: justify;
+    }
+    #contenido_sumplementos .media{
+        padding: 10px;
+        background: #fff;
+        border-bottom: 1px solid #eaeaea;
+    }
+    
+    .header-seccion{
+        margin: 10px 0px 30px 0px;
+    }
+    
+    .error{ font-style: italic; font-size: 12px; margin: 0px; padding: 5px; display: none; }
+    #respuesta{ text-align: center; display: none;}
+    #respuesta .icono{ display: block; font-size: 50px;}
+    #respuesta .nombre{ letter-spacing: 1px; text-transform: uppercase; font-weight: bold; display: block; padding: 12px 0px; font-size: 20px}
+</style>
+
+<!-- -------------- -->
+<!-- HEADER SECCIÓN -->
+<!-- -------------- -->
+<div class="header-seccion">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h3><span class="glyphicon glyphicon-th-list"></span> Suplementos alimenticios</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+            
+    <div class="row">
+        <div class="col-md-4">
+            
+            <img class="img-responsive img-thumbnail" src="images/banner_complementos_vertical.jpg">
+            
+            <hr/>
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><span class="glyphicon glyphicon-phone"></span> Contacto para complementos</div>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li><b>Oficina: </b> (0155) 5934 9416</li>
+                        <li><b>Whatsapp:</b> (55) 3080 1128</li>
+                        <li><b>Email:</b> arlacss@hotmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- FORMULARIO -->
+            <div id="formulario" class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><span class="glyphicon glyphicon-envelope"></span> Solicita una cotización</div>
+                </div>
+                
+                <div class="panel-body">
+                    <form class="form">
+                         <div class="form-group">
+                            <label for="txt_nombre">Ingresa Nombre</label>
+                            <input type="text" class="form-control" id="txt_nombre">
+                            <div id="err_nombre" class="alert alert-danger error">Nombre requerido</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txt_tel">Teléfono de contacto</label>
+                            <input type="text" class="form-control" id="txt_tel">
+                            <div id="err_tel" class="alert alert-danger error">Teléfono requerido</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_email">Correo electrónico</label>
+                            <input type="text" class="form-control" id="txt_email">
+                            <div id="err_email" class="alert alert-danger error">Correo requerido</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_msj">Mensaje</label>
+                            <textarea id="txt_msg" class="form-control" rows="3"></textarea>
+                            <div id="err_msg" class="alert alert-danger error">Mensaje requerido</div>
+                        </div>
+                        <button id="btn_enviar" class="btn btn-primary btn-block">Enviar mensaje</button>
+                    
+                    </form>
+                </div>
+            </div>
+            
+            <div id="respuesta">
+                <div class="alert alert-success">
+                    <span class="icono glyphicon glyphicon-ok-circle"></span>
+                    <span class="nombre"></span>Tu mensaje ha sido enviado exitosamente, gracias por contactarnos, responderemos lo antes posible.
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-8">
+            <div id="contenido_sumplementos"></div>
+        </div>
+    </div>
+    
+</div>
+
+<script>
+    $(document).ready(function(){
+        
+        /********************/
+        /*CARGAR SUPLEMENTOS*/
+        /********************/
+        
+        $.ajax({
+            url:"contenido/suplementos/Lista.php",
+            cache:false,
+            success: function(content){
+                $("#contenido_sumplementos").empty().html(content).show();
+            },beforeSend: function(){}
+        });
+        
+        /********************/
+        /* VALIDAR CORREO */
+        /********************/
+        var nombre="";
+        var email="";
+        var telefono="";
+        var msg="";
+        var err=0;
+        
+        
+        $("#btn_enviar").click(function(e){
+            e.preventDefault();
+            validar();
+        });
+                
+        function validar(){
+            err=0;
+            nombre = $("#txt_nombre").val();
+            telefono = $("#txt_tel").val();
+            email = $("#txt_email").val();
+            msg = $("#txt_msg").val();
+                        
+            if(!es_requerido(nombre)){
+                $("#err_nombre").slideDown();
+                err++;
+            } else $("#err_nombre").slideUp();
+            
+            if(!es_requerido(telefono)){
+                $("#err_tel").slideDown();
+                err++;
+            } else $("#err_tel").slideUp();
+            
+            if(!es_email(email)){
+                $("#err_email").slideDown();
+                err++;
+            } else $("#err_email").slideUp();
+            
+            if(!es_requerido(msg)){
+                $("#err_msg").slideDown();
+                err++;
+            } else $("#err_msg").slideUp();
+            
+            if(err==0){                     
+                $.get(
+                    "emailSuplementos.php",
+                    {
+                        "nombre":nombre,
+                        "telefono":telefono,
+                        "email":email,
+                        "msg":msg
+                    }
+                );
+                
+                $("#btn_enviar").hide();
+                $("#formulario").slideUp(300, function(){
+                    $("#respuesta .nombre").text(nombre);
+                    $("#respuesta").slideDown();
+                });       
+            }
+        }
+        
+    });
+</script>

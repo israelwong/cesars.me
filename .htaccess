@@ -1,0 +1,7 @@
+ <IfModule mime_module>
+ AddHandler application/x-httpd-ea-php72 .php .php7 .phtml
+ </IfModule>
+
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://cesars.me/$1 [R,L]

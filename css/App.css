@@ -1,0 +1,87 @@
+html, body{ background: url(../images/bg_1.png); }
+hr{ margin: 5px;}
+
+/* HEADER */
+#header-desktop{ background: #f0f0f0;padding: 25px 0px;border-bottom: 1px solid #ccc;margin-bottom: 15px;}
+#rrss img{width: 25px;margin-top: 5px;}
+#menu {margin-top: 3px;}
+#menu a{text-transform: uppercase; font-size: 10px;}
+
+a{ cursor: default; }
+
+/* CONTENT SETTINGS*/
+.seccion h3{font-family: 'Orbitron', sans-serif; color: #337ab7;}
+.seccion h5{font-family: 'Orbitron', sans-serif;}
+.seccion .alert{ text-align: center; font-size: 16px; color: #999;  }
+.seccion .fecha{ color: #337ab7; }
+
+.header-seccion h3{
+    color: #999;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: lighter;
+    font-family: 'Orbitron', sans-serif;
+}
+                    
+
+/*FOOTER*/
+
+#footer{
+    border-top: 1px solid #ccc;
+    background: url(../images/footer_bg2.jpg) #000 bottom center;
+    padding-top: 15px;
+    min-height: 300px;
+}
+
+#footer .title{
+    font-family: 'Orbitron', sans-serif;
+    background: #e13d13;
+    color: #fff;
+    font-size: 13px;
+    padding: 10px;
+}
+
+#footer .contenido{
+    padding: 10px 0px;
+    background: #fff;
+    opacity: 0.5;
+    font-size: 13px;
+}
+#footer .panelFooter{border: thin solid #999;}
+#footer a{ color: #999;}
+#footer .rrss img{width: 20px;}
+#footer img{width: 150px;}
+#footer #creditos{
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    color: #999;
+}
+
+/* Grow */
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.5 ss;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,.hvr-grow:focus,.hvr-grow:active {}
+
+/* SUCURSALES */
+.sucursal_nombre{ color: #999; }
+.header-seccion{ margin-bottom: 10px; }
+#map {height: 400px;width: 100%; margin-top: 15px }
+.sucursal .panel-title{font-size: 14px;font-family: 'Orbitron', sans-serif; color: #999;}    
+.sucursal h3{font-size: 18px;font-family: 'Orbitron', sans-serif; color: #999;}        
+.sucursal ul li{ color: #999; }
+.sucursal p{ text-align: center; color: #999; font-size: 12px; padding: 10px; }
+
+#header-movil .logo-movil { margin-top: 20px; }
+#header-movil .navbar{ margin-top: 20px; }

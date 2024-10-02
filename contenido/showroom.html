@@ -1,0 +1,89 @@
+    
+<style>    
+/*    .bs-glyphicons {margin: 0 -10px 20px;overflow: hidden;}
+    .bs-glyphicons-list {padding-left: 0;list-style: none;}
+    .bs-glyphicons li {width: 20%;}
+    .bs-glyphicons li {
+        float: left;
+        width: 32%;
+        height: 230px;
+        padding: 30px 10px 0px 0px;        
+        text-align: center;
+        background: #e7e7e7;
+        border: 2px solid #f1f1f1;
+    }*/
+</style>
+
+<!-- -------------- -->
+<!-- HEADER SECCIÓN -->
+<!-- -------------- -->
+
+<div class="header-seccion">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Cesar´s Gym</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="showroom">
+    
+    <div class="container">
+        <div class="col-md-4">
+            <!-- MENU SHOWROOM -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><span class="glyphicon glyphicon-menu-hamburger"></span> Cesar´s Gym</div>
+                </div>
+                <div class="panel-body">
+                    <ul id="menu_showroom" class="nav nav-pills nav-stacked">
+                        <li class="active"> <a title="5934 8031" href="#tecamac">Tecámac</a> </li>
+                        <li> <a title="5934 8031" href="#ecatepec">Ecatepec</a> </li>
+                        <li> <a title="5934 8031" href="#ecatepec2">Ecatepec Platinum</a> </li>
+                        <li> <a href="#rosa">Zona Rosa</a> </li>
+                        <!--<li> <a href="#cosmopol">Cosmopol Platinum</a> </li>-->
+                        <li> <a href="#zumpango">Zumpango Platinum</a> </li>
+                        <li> <a href="#tizayuca">Tizayuca</a> </li>
+                    </ul>
+                </div>
+            </div>
+                 
+        </div>
+        
+        <div class="col-md-8">
+            <div id="content-showroom"></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function(){
+        
+        mostrarSucursal("tecamac");
+        
+        $("#menu_showroom a").click(function(e){
+            e.preventDefault();
+            var href= $(this).attr("href");
+            var target = href.substring(1, href.length); 
+            $("#menu_showroom li").removeClass("active");
+            $(this).parent().addClass("active");
+            
+            mostrarSucursal(target);
+        });
+        
+        function mostrarSucursal(url){
+            
+            $.ajax({
+                url:"contenido/showroom/"+url+".html",
+                cache:false,
+                success: function(content){
+                    $("#content-showroom").html(content);                   
+                },beforeSend: function(){}
+            });
+            
+        }
+    });
+</script>
