@@ -26,6 +26,6 @@ $salida .= '<p>Tel.: ' . mb_convert_encoding($telefono, 'ISO-8859-1', 'UTF-8') .
 $salida .= '<p>Correo electrónico.: ' . mb_convert_encoding($email, 'ISO-8859-1', 'UTF-8') . '<p>';
 $salida .= '<p>Mensaje: ' . mb_convert_encoding($msg, 'ISO-8859-1', 'UTF-8') . '<br>';
 
-//mail('ing.israel.wong@gmail.com',$asunto,$salida,$headers);
-mail('juliotonic@hotmail.com', $asunto, $salida, $headers);
+mail('ing.israel.wong@gmail.com', $asunto, $salida, $headers);
+// mail('juliotonic@hotmail.com', $asunto, $salida, $headers);
 //echo true;
