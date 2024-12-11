@@ -81,7 +81,7 @@
                 
                 <div class="panel-body">
                     <form class="form">
-                         <div class="form-group">
+                        <div class="form-group">
                             <label for="txt_nombre">Ingresa Nombre</label>
                             <input type="text" class="form-control" id="txt_nombre">
                             <div id="err_nombre" class="alert alert-danger error">Nombre requerido</div>
@@ -205,15 +205,32 @@
             } else $("#err_msg").slideUp();
             
             if(err==0){                     
-                $.get(
-                    "emailSuplementos.php",
-                    {
-                        "nombre":nombre,
-                        "telefono":telefono,
-                        "email":email,
-                        "msg":msg
-                    }
-                );
+                // $.get(
+                //     "emailSuplementos.php",
+                //     {
+                //         "nombre":nombre,
+                //         "telefono":telefono,
+                //         "email":email,
+                //         "msg":msg
+                //     }
+                // );
+
+                const sendEmail = async () => {
+                    const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                    to: 'ing.israel.wong@gail.com',
+                    from: email,
+                    subject: 'Cotización de suplementos',
+                    text: msg,
+                    }),
+                });
+
+                const data = await response.json();
+                console.log(data);
+                };
+
                 
                 $("#btn_enviar").hide();
                 $("#formulario").slideUp(300, function(){
