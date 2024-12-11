@@ -16,7 +16,7 @@ $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
 //dirección del remitente
 $headers .= "From: CSS Equipos <" . $email . ">\r\n";
 
-//direcci—n de respuesta, si queremos que sea distinta que la del remitente
+//dirección de respuesta, si queremos que sea distinta que la del remitente
 $headers .= "Reply-To: " . $email . " \r\n";
 
 $salida = '';
@@ -26,6 +26,11 @@ $salida .= '<p>Tel.: ' . mb_convert_encoding($telefono, 'ISO-8859-1', 'UTF-8') .
 $salida .= '<p>Correo electrónico.: ' . mb_convert_encoding($email, 'ISO-8859-1', 'UTF-8') . '<p>';
 $salida .= '<p>Mensaje: ' . mb_convert_encoding($msg, 'ISO-8859-1', 'UTF-8') . '<br>';
 
-mail('ing.israel.wong@gmail.com', $asunto, $salida, $headers);
-// mail('juliotonic@hotmail.com', $asunto, $salida, $headers);
-//echo true;
+$enviado = mail('ing.israel.wong@gmail.com', $asunto, $salida, $headers);
+// $enviado = mail('juliotonic@hotmail.com', $asunto, $salida, $headers);
+
+if ($enviado) {
+    echo "El correo se envió correctamente.";
+} else {
+    echo "Hubo un error al enviar el correo.";
+}
