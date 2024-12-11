@@ -1,27 +1,34 @@
-import formData from 'form-data';
-import Mailgun from 'mailgun.js';
-
-const mailgun = new Mailgun(formData);
-const client = mailgun.client({ username: 'api', key: process.env.MAILGUN_API_KEY });
+import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Método no permitido' });
-  }
+  if (req.method === 'POST') {
+    const { to, subject, text } = req.body;
 
-  const { to, subject, text } = req.body;
+    // Crear el transporter con las credenciales de Gmail
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
+      },
+    });
 
-  try {
-    const result = await client.messages.create(process.env.MAILGUN_DOMAIN, {
-      from: 'Tu Nombre <tu-email@tudominio.com>',
+    // Configura los datos del correo
+    const mailOptions = {
+      from: process.env.GMAIL_USER,
       to,
       subject,
       text,
-    });
+    };
 
-    return res.status(200).json({ message: 'Correo enviado con éxito', id: result.id });
-  } catch (error) {
-    console.error('Error enviando correo:', error);
-    return res.status(500).json({ message: 'Error al enviar correo', error });
+    try {
+      // Enviar el correo
+      await transporter.sendMail(mailOptions);
+      res.status(200).json({ message: 'Correo enviado con éxito' });
+    } catch (error) {
+      res.status(500).json({ error: 'Error al enviar el correo', details: error.message });
+    }
+  } else {
+    res.status(405).json({ error: 'Método no permitido' });
   }
 }

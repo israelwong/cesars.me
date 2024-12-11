@@ -181,8 +181,9 @@
             err=0;
             nombre = $("#txt_nombre").val();
             telefono = $("#txt_tel").val();
-            email = $("#txt_email").val();
             msg = $("#txt_msg").val();
+            email = $("#txt_email").val();
+            var message = `Nombre: ${nombre}\nTeléfono: ${telefono}\nCorreo: ${email}\nMensaje: ${msg}`;
                         
             if(!es_requerido(nombre)){
                 $("#err_nombre").slideDown();
@@ -205,32 +206,22 @@
             } else $("#err_msg").slideUp();
             
             if(err==0){                     
-                // $.get(
-                //     "emailSuplementos.php",
-                //     {
-                //         "nombre":nombre,
-                //         "telefono":telefono,
-                //         "email":email,
-                //         "msg":msg
-                //     }
-                // );
-
-                const sendEmail = async () => {
-                    const response = await fetch('/api/send-email', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                    to: 'ing.israel.wong@gail.com',
-                    from: email,
-                    subject: 'Cotización de suplementos',
-                    text: msg,
-                    }),
+                $.ajax({
+                url: '/api/send-email',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    to: email,
+                    subject: 'Solicitud de cotización de suplementos',
+                    text: message,
+                }),
+                success: function (response) {
+                $('#response-message').html('<p style="color: green;">' + response.message + '</p>');
+                },
+                error: function (error) {
+                $('#response-message').html('<p style="color: red;">Error al enviar el correo: ' + error.responseJSON.error + '</p>');
+                },
                 });
-
-                const data = await response.json();
-                console.log(data);
-                };
-
                 
                 $("#btn_enviar").hide();
                 $("#formulario").slideUp(300, function(){
