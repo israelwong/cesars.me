@@ -207,7 +207,8 @@
                 err++;
             } else $("#err_msg").slideUp();
             
-            if(err==0){                     
+            if(err==0){              
+       
                 $.ajax({
                 url: '/api/sendmail',
                 method: 'POST',
