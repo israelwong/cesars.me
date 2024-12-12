@@ -587,15 +587,32 @@
             } else $("#err_msg").slideUp();
             
             if(err==0){                     
-                $.get(
-                    "emailEquipos.php",
-                    {
-                        "nombre":nombre,
-                        "telefono":telefono,
-                        "email":email,
-                        "msg":msg
-                    }
-                );
+               
+                var message = `Nombre: ${nombre}\nTeléfono: ${telefono}\nCorreo: ${email}\nMensaje: ${msg}`;
+
+                $.ajax({
+                url: '/api/sendmail',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    to: email,
+                    subject: 'Solicitud de cotización de equipo',
+                    text: message,
+                    email,
+                }),
+                success: function (response) {
+                $('#response-message').html('<p style="color: green;">' + response.message + '</p>');
+                },
+                error: function (error) {
+                $('#response-message').html('<p style="color: red;">Error al enviar el correo: ' + error.responseJSON.error + '</p>');
+                },
+                });
+                
+                $("#btn_enviar").hide();
+                $("#formulario").slideUp(300, function(){
+                    $("#respuesta .nombre").text(nombre);
+                    $("#respuesta").slideDown();
+                });       
                 
                 $("#btn_enviar").hide();
                 $("#formulario").slideUp(300, function(){
