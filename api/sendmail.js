@@ -30,6 +30,6 @@ module.exports = async function (req, res) {
       res.status(500).json({ error: 'Error al enviar el correo', details: error.message });
     }
   } else {
-    res.status(405).json({ error: 'Método no permitido' });
+    res.status(405).json({ error: 'Método no permitido ' });
   }
 };
