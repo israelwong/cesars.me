@@ -15,8 +15,8 @@ module.exports = async function (req, res) {
 
     // Configura los datos del correo
     const mailOptions = {
-      from: email,
-      to:'ing.israel.wong@gmail.com',
+      from: 'ing.israel.wong@gmail.com',
+      to:email,
       subject,
       text,
       replyTo: email
