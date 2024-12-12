@@ -15,7 +15,7 @@ module.exports = async function (req, res) {
 
     // Configura los datos del correo
     const mailOptions = {
-      from: process.env.GMAIL_USER,
+      from: email,
       to,
       subject,
       text,
