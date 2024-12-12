@@ -206,16 +206,18 @@
                 err++;
             } else $("#err_msg").slideUp();
             
-            var message = `Nombre: ${nombre}\nTeléfono: ${telefono}\nCorreo: ${email}\nMensaje: ${msg}`;
             
             if(err==0){              
+                
+                var message = `Nombre: ${nombre}\nTeléfono: ${telefono}\nCorreo: ${email}\nMensaje: ${msg}`;
        
                 $.ajax({
                 url: '/api/sendmail',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    to: email,
+                    from: email,
+                    to: 'arlacss@hotmail.com',
                     subject: 'Solicitud de cotización de suplementos',
                     text: message,
                     email,
