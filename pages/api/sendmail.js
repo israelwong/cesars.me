@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 
 module.exports = async function (req, res) {
   if (req.method === 'POST') {
-    const { to, subject, text } = req.body;
+    const { to, subject, text, email } = req.body;
 
     // Crear el transporter con las credenciales de Gmail
     const transporter = nodemailer.createTransport({
@@ -19,6 +19,7 @@ module.exports = async function (req, res) {
       to,
       subject,
       text,
+      replyTo: email
     };
 
     try {

@@ -178,11 +178,13 @@
         });
                 
         function validar(){
+
             err=0;
             nombre = $("#txt_nombre").val();
             telefono = $("#txt_tel").val();
             msg = $("#txt_msg").val();
             email = $("#txt_email").val();
+
             var message = `Nombre: ${nombre}\nTeléfono: ${telefono}\nCorreo: ${email}\nMensaje: ${msg}`;
                         
             if(!es_requerido(nombre)){
@@ -214,6 +216,7 @@
                     to: email,
                     subject: 'Solicitud de cotización de suplementos',
                     text: message,
+                    email,
                 }),
                 success: function (response) {
                 $('#response-message').html('<p style="color: green;">' + response.message + '</p>');
