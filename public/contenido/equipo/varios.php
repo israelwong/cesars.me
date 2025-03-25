@@ -2,7 +2,6 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
-//error_reporting(0);
 
 $nombre_catalogo = "900_Varios";
 $categoria = "Varios";
@@ -21,13 +20,13 @@ array_push($catalogo, array("CL914", "Jaula de 9 estaciones con accesorios y 600
 array_push($catalogo, array("CL915", "Disco olímpico de 2.5, 5, 10, 15, 20 Kg ($ x Kg)"));
 array_push($catalogo, array("CL918", "Multigym 16 estaciones"));
 array_push($catalogo, array("CL919", "Banco peso muerto"));
-array_push($catalogo, array("CL920", "Soporte para barra olimpica y 'Z'"));
-array_push($catalogo, array("CL921", "Aparato smith doble accion"));
+array_push($catalogo, array("CL920", "Soporte para barra olímpica y 'Z'"));
+array_push($catalogo, array("CL921", "Aparato smith doble acción"));
 array_push($catalogo, array("CL922", "Aparato multifuncional P/L"));
 array_push($catalogo, array("CL923", "Escalera sin fin"));
-array_push($catalogo, array("CL924", "Eliptica PRECOR"));
+array_push($catalogo, array("CL924", "Elíptica PRECOR"));
 array_push($catalogo, array("CL925", "Corredora life fitness 95TI"));
-array_push($catalogo, array("CL927", "Eliptica PRECOR AMT"));
+array_push($catalogo, array("CL927", "Elíptica PRECOR AMT"));
 
 $alt = substr($nombre_catalogo, 4, strlen($nombre_catalogo));
 ?>
@@ -42,7 +41,6 @@ $alt = substr($nombre_catalogo, 4, strlen($nombre_catalogo));
                         <div class="img-responsive">
                             <h4><?php echo $equipo[0] ?> </h4>
                             <p><?php echo $equipo[1] ?></p>
-                            <!-- Verifica que la ruta de la imagen sea correcta -->
                             <img class="img-responsive"
                                 src="images/equipos/<?php echo $nombre_catalogo . "/" . $equipo[0] ?>.jpg"
                                 alt="<?php echo $alt ?>">
@@ -71,7 +69,6 @@ $alt = substr($nombre_catalogo, 4, strlen($nombre_catalogo));
                     <li>
                         <h4><?php echo $equipo[0] ?> </h4>
                         <p><?php echo $equipo[1] ?></p>
-                        <!-- Verifica que la ruta de la imagen sea correcta -->
                         <img class="img-responsive"
                             src="images/equipos/<?php echo $nombre_catalogo . "/" . $equipo[0] ?>.jpg"
                             alt="<?php echo $alt ?>">
